@@ -1,5 +1,5 @@
 body{
-    font-family: Helvetica;
+    font-family: 'times new roman';
     font-size: 16px;
     line-height: 1.5;
     margin: 0;
@@ -8,7 +8,7 @@ body{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-  background-color: bisque;
+  background-color: rgb(167, 255, 174);
 }
 .page-header ul{
   display: flex;
@@ -20,4 +20,13 @@ body{
   display: block;
   padding:0.5em;
   text-decoration:none;
+}
+.items {
+  display: grid;
+  grid-template-columns: repeat(4, 120px);
+  grid-column-gap: 200px;
+  margin-left: 100px;
+  border: solid 1px;
+  width: 300px;
+  margin-top: 30px;
 }

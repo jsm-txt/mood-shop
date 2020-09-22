@@ -9,7 +9,7 @@ for (let i=0; i<data.length; ++i) {
 
     // create an image element
     let img = document.createElement('img');
-    // this will change each time we go through the loop. Can you explain why?
+    
     img.src = data[i].image
     img.width = 300
     img.height = 300
@@ -29,5 +29,9 @@ newDiv.appendChild(desc)
 let price = document.createElement('P')
 price.innerText = data[i].price
 newDiv.appendChild(price)
+
+let cart = document.createElement("button")
+cart.innerText = "Add to Cart"
+newDiv.appendChild(cart)
 }
 
