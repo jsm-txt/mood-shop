@@ -35,3 +35,41 @@ cart.innerText = "Add to Cart"
 newDiv.appendChild(cart)
 }
 
+const cart = [ ]
+
+function addItem(num, price){
+    for( let i =0; i <cart.length; i +=1 ){
+        if (cart[i].name === name){
+            cart[i].qty +=1
+            return
+        }
+    }
+    const item = {name:name, price :price, qty: 1}
+    cart.push(name)
+}
+function showItems(){
+    const qty = getQty()
+    console.log(`you have ${qty} items in your cart`)
+    for (let i = 0; i < cart.length; i +=1){
+        console.log(` ${cart[i]} $ ${cart[i].price} ${cart[i].qty} `)
+    }
+    const total = getTotal()
+    console.log(`total $${total}`)
+}
+function getQty(){
+    let qty = 0
+    for(let i =0; i < cart.length; i += 1){
+        qty +=cart[i].qty
+    }
+    return qty
+
+}
+function getTotal(){
+    let total =0
+    for (let i = 0; i < cart.length; i +=1){
+        total += cart[i].price * cart[i].qty
+    }
+    return total.toFixed(2)
+}
+
+addItem(a)
