@@ -1,6 +1,8 @@
 import data from './data.js'
 const itemsContainer = document.getElementById('items')
 const itemList = document.getElementById('item-list')
+const cartQty = document.getElementById('cart-qty')
+const cartTotal = document.getElementById('cart-total')
 itemList.innerHTML = '<li> Hello World</li>'
 
 for (let i=0; i<data.length; ++i) {
@@ -34,7 +36,16 @@ newDiv.appendChild(price)
 let cart = document.createElement("button")
 cart.innerText = "Add to Cart"
 newDiv.appendChild(cart)
+
+const all_items_button = Array.from(document.querySelectorAll("button"))
+all_items_button.forEach(elt => elt.addEventListener('click', () => {
+    addItem(elt.getAttribute('id'), elt.getAttribute('data-price'))
+    showItems()
+  }))
+
 }
+
+
 
 const cart = [ ]
 
@@ -48,15 +59,34 @@ function addItem(num, price){
     const item = {name:name, price :price, qty: 1}
     cart.push(name)
 }
+
+
 function showItems(){
     const qty = getQty()
-    console.log(`you have ${qty} items in your cart`)
+    //console.log(`you have ${qty} items in your cart`)
+    innerQty.innerHTML= `you have ${qty} items in your cart`
+    let itemStr = ''
     for (let i = 0; i < cart.length; i +=1){
-        console.log(` ${cart[i]} $ ${cart[i].price} ${cart[i].qty} `)
+        //const name = cart[i].name
+        //const price = cart[i].price
+       // const qty = cart[i].qty
+        
+       //console.log(` ${cart[i].name} $${cart[i].price} x ${cart[i].qty} `)
+       const{ name , price, qty} = cart[i]
+
+
+
+        itemStr += `<li> ${name} $${price} x ${qty} 
+         = ${qty * price} </li>`
     }
+    itemList.innerHTML = itemStr
+
     const total = getTotal()
-    console.log(`total $${total}`)
+    //console.log(`total $${total}`)
+    cartTotal.innerHTML=`total $${total}`
 }
+
+
 function getQty(){
     let qty = 0
     for(let i =0; i < cart.length; i += 1){
