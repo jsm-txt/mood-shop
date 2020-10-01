@@ -1,6 +1,7 @@
 import data from './data.js'
 const itemsContainer = document.getElementById('items')
-
+const itemList = document.getElementById('item-list')
+itemList.innerHTML = '<li> Hello World</li>'
 
 for (let i=0; i<data.length; ++i) {
     // create a new div element and give it a class name
@@ -71,5 +72,17 @@ function getTotal(){
     }
     return total.toFixed(2)
 }
-
-addItem(a)
+function removeItem(name, qty = 0){
+    for (let i = 0; i < cart.length; i +=1){
+        if(cart[i].name === name){
+            if(qty > 0){
+                cart[i].qty -=1    
+            }
+            
+            if(cart[i].qty < 1){
+                cart.splice(i, 1)
+            }
+            return
+        }
+    }
+}
